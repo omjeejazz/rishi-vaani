@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishi Vaani | Astrology by Pandit Rupesh Kumar Thakur</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES & RESET
+        ========================================= */
+        :root {
+            --bg-deep: #050510;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --purple-glow: #8a2be2;
+            --text-main: #e0e0e0;
+            --text-light: #ffffff;
+            --whatsapp: #25D366;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--text-light);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            background: rgba(5, 5, 16, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* =========================================
+           HERO SECTION
+        ========================================= */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            overflow: hidden;
+        }
+
+        /* Animated Stars */
+        .stars-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Floating Planets */
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 2;
+            filter: blur(1px);
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.5);
+        }
+
+        .planet-1 {
+            width: 150px; height: 150px;
+            background: radial-gradient(circle at 30% 30%, #ff7e5f, #feb47b);
+            top: 15%; left: 10%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .planet-2 {
+            width: 80px; height: 80px;
+            background: radial-gradient(circle at 30% 30%, #6a82fb, #fc5c7d);
+            bottom: 20%; right: 15%;
+            animation: float 6s infinite ease-in-out reverse;
+        }
+        
+        .planet-3 {
+            width: 200px; height: 200px;
+            background: radial-gradient(circle at 30% 30%, #43e97b, #38f9d7);
+            top: 60%; left: 5%;
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-family: var(--font-body);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--whatsapp);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.7);
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.5rem;
+        }
+
+        /* =========================================
+           VIDEOS SECTION
+        ========================================= */
+        #videos {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--bg-deep) 0%, #0d0d20 100%);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            margin-bottom: 5px;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .video-info p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* =========================================
+           QUICK TIPS SECTION
+        ========================================= */
+        #tips {
+            padding: 100px 0;
+            background: var(--bg-deep);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .tip-card:hover::before {
+            opacity: 1;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .tip-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--bg-deep);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .tip-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .tip-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           FAQ SECTION
+        ========================================= */
+        #faq {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #0d0d20 0%, var(--bg-deep) 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .faq-question i {
+            color: var(--gold);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 25px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 25px 20px;
+        }
+
+        /* =========================================
+           CONTACT SECTION
+        ========================================= */
+        #contact {
+            padding: 100px 0;
+            background: var(--bg-deep);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item:last-child { margin-bottom: 0; }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-top: 5px;
+            width: 30px;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .contact-item p, .contact-item a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+        
+        .contact-item a:hover { color: var(--gold); }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.5) invert(0.9) contrast(0.9); /* Dark mode map effect */
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        footer {
+            background: #03030a;
+            padding: 40px 0 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .footer-socials a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-socials a:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Can be expanded to a hamburger menu later */
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content h2 { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .planet-1 { width: 80px; height: 80px; }
+            .planet-2 { width: 50px; height: 50px; }
+            .planet-3 { width: 100px; height: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <div class="logo">Rishi Vaani</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#tips">Wisdom</a></li>
+                <li><a href="#faq">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="stars-container" id="stars"></div>
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+        <div class="planet planet-3"></div>
+        
+        <div class="hero-content" id="hero-content">
+            <h1>Rishi Vaani</h1>
+            <h2>Astrological Guidance & Divine Wisdom</h2>
+            <p>Unlock the secrets of your destiny with <strong>Pandit Rupesh Kumar Thakur</strong>.<br>Accurate Kundli, Vastu Shastra, and Planetary Remedies.</p>
+            
+            <!-- CHANGE THE PHONE NUMBER BELOW (Include Country Code, e.g., 91 for India) -->
+            <a href="https://wa.me/919999999999?text=Hello%20Pandit%20Rupesh%20Ji,%20I%20would%20like%20to%20consult%20you%20for%20astrological%20guidance." target="_blank" class="btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Consult on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- VIDEOS SECTION -->
+    <section id="videos">
+        <div class="container">
+            <h2 class="section-title">Divine Discourses</h2>
+            <p class="section-subtitle">Watch insightful videos on Astrology, Vastu, and Spiritual Remedies by Pandit Ji.</p>
+            
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <!-- Replace VIDEO_ID_1 with actual YouTube Video ID -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Astrology Basics" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Understanding Your Kundli</h3>
+                        <p>Learn the basics of your birth chart and planetary positions.</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <!-- Replace VIDEO_ID_2 with actual YouTube Video ID -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vastu Tips" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Vastu Shastra for Home</h3>
+                        <p>Simple Vastu tips to bring positivity and wealth to your home.</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <!-- Replace VIDEO_ID_3 with actual YouTube Video ID -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Shani Dev Remedies" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Shani Dosh & Remedies</h3>
+                        <p>Effective remedies to pacify Shani Dev and overcome obstacles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK TIPS SECTION -->
+    <section id="tips">
+        <div class="container">
+            <h2 class="section-title">Ancient Wisdom & Quick Tips</h2>
+            <p class="section-subtitle">Small changes in your environment and habits can align you with the cosmic energies.</p>
+            
+            <div class="tips-grid">
+                <!-- Tip 1: Vastu -->
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-home"></i></div>
+                    <h3>Vastu Shastra</h3>
+                    <p>Always keep the <strong>North-East</strong> direction of your home clean and clutter-free. This is the zone of water and divine energy, bringing peace and prosperity to the household.</p>
+                </div>
+
+                <!-- Tip 2: Grah (Planets) -->
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-saturn"></i></div>
+                    <h3>Grah (Planets)</h3>
+                    <p>To strengthen a weak <strong>Shani (Saturn)</strong>, feed black birds or donate black clothes on Saturdays. Avoid making major decisions during Saturn's retrograde phase (Vakri).</p>
+                </div>
+
+                <!-- Tip 3: Disha (Directions) -->
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-compass"></i></div>
+                    <h3>Disha (Directions)</h3>
+                    <p>While sleeping, always keep your head towards the <strong>South or East</strong>. Never sleep with your head towards the North, as it disrupts the Earth's magnetic field and causes restless sleep.</p>
+                </div>
+
+                <!-- Tip 4: General -->
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-om"></i></div>
+                    <h3>Spiritual Routine</h3>
+                    <p>Chanting the <strong>Gayatri Mantra</strong> or "Om" for just 5 minutes during the Brahma Muhurta (early morning) clears mental fog and aligns your aura with positive cosmic vibrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common queries about astrology and consultations.</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What details do I need to provide for a Kundli reading?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For an accurate horoscope reading, you need to provide your exact Date of Birth, Time of Birth (as precise as possible), and Place of Birth. This helps in calculating the exact planetary positions at the time of your birth.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can astrology really predict the future?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Astrology is the science of cosmic timings. It doesn't dictate an unchangeable fate but rather highlights the karmic patterns and planetary influences. It provides guidance, remedies, and helps you make informed decisions to navigate life's challenges effectively.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I book a personal consultation with Pandit Rupesh Kumar Thakur?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can easily book a consultation by clicking the "Consult on WhatsApp" button on our homepage or by calling our contact number directly. We offer both in-person and online video/phone consultations based on your convenience.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do the remedies require expensive rituals or poojas?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Not at all. Pandit Ji believes in simple, practical, and sattvic remedies. Most recommendations include chanting specific mantras, wearing specific colors, donating to the needy, or making minor Vastu adjustments. The focus is on spiritual growth, not financial burden.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Reach out for consultations, remedies, and spiritual guidance.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <h4>Pandit Rupesh Kumar Thakur</h4>
+                            <p>Expert Astrologer & Vastu Consultant</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone / WhatsApp</h4>
+                            <!-- CHANGE PHONE NUMBER -->
+                            <a href="tel:+919999999999">+91 99999 99999</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Address</h4>
+                            <!-- CHANGE EMAIL -->
+                            <a href="mailto:contact@rishivaani.com">contact@rishivaani.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Ashram / Office Address</h4>
+                            <!-- CHANGE ADDRESS -->
+                            <p>123, Spiritual Avenue, Near Main Temple,<br>New Delhi, India - 110001</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <!-- CHANGE MAP LOCATION: Replace the 'q=' parameter with your actual address or coordinates -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.8392319973!2d77.06889754195698!3d28.5275820068705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb69d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1690000000000" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Rishi Vaani</div>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 20px;">Illuminating paths through the wisdom of the stars.</p>
+            
+            <div class="footer-socials">
+                <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://wa.me/919999999999" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 Rishi Vaani | Pandit Rupesh Kumar Thakur. All Rights Reserved. <br>
+                <small>Designed for Divine Guidance & Spiritual Awakening.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // 1. Generate Animated Stars
+        const starsContainer = document.getElementById('stars');
+        const starCount = 150;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random size between 1px and 3px
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Random position
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            
+            // Random animation duration and delay
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
+        // 2. Hero Parallax Effect on Mouse Move
+        const heroContent = document.getElementById('hero-content');
+        const planets = document.querySelectorAll('.planet');
+
+        document.getElementById('hero').addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+
+            heroContent.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            
+            planets.forEach((planet, index) => {
+                const speed = (index + 1) * 0.5;
+                planet.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
+        // 3. FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // 4. Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
